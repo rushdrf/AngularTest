@@ -1,62 +1,36 @@
-class TestClass {
+import TestClass from "/Repos/AngularTest/main";
 
-    num1 = 1;
-    num2 = 100;
-    static num2 = 13;
 
-  testMethod():void {
-    console.log("testMethod output");
-  }
 
-  testMethod2():number {
-    return 99;
-  }
-
-  static staticMethod():void {
-    console.log("Hello StaticMethod")
-  }
-
-  WhileMethod():void {
-    let n:number = this.num1;
-    while (n <= this.num2) {
-        if (n > 50) break;
-        console.log(n % 2 === 0 ? n + " is an even number." : n + " is an odd number.");
-        n++;
-    }
-  }
-
-  DoMethod():void {
-    let n:number = this.num1;
-    do {
-        console.log(n % 2 === 0 ? n + " is an even number." : n + " is an odd number.");
-        n++;
-    } while (n <= this.num2)
-  }
-
-  MethodWithParameter(num1:number, num2:number):number {
-    let n:number;
-
-    n = num1 + num2;
-
-    return n;
-  }
+//#region object sample
+var people = {
+  Name: "Rusydi",
+  Age: 25,
+  Race: "Malay",
+  Intro: () => { return "Hello, my name is " +  people.Name }
 }
 
-class Employee {
-  id:number | undefined;
-  name:string | undefined;
-
-  constructor(id:number, name:string) {
-    this.id = id;
-    this.name = name;
-  }
-
-  Call() {
-    console.log(this.id);
-    console.log(this.name);
-  }
-
+interface Iperson  {
+  Name:string,
+  Age:number,
+  Race:string,
+  Intro: () => string
 }
+
+var person:Iperson = {
+  Name: "Afiq",
+  Age: 30,
+  Race: "Malay",
+  Intro: () => { return "Hello, my name is " + person.Name }
+}
+
+var worker:Iperson = {
+  Name: "Lee",
+  Age: 31,
+  Race: "Chinese",
+  Intro: () => { return "Hello, my name is " + worker.Name }
+}
+//#endregion
 
 //#region function
 function RestParam(...nums:number[]) {
@@ -161,10 +135,29 @@ console.log("Employee's name: "+stu.name)
 console.log("Employee's Email ID: "+stu.email) */
 //#endregion
 
+//#region object test
+let obj = {
+  Name: "Rusydi",
+  Age: 23,
+  Introduction: (x:string) => {return `Hello, my name is ${obj.Name}. I am ${obj.Age}. Quotes: ${x}`}
+}
+//#region 
+
 console.log("*********************** WELCOME TO TYPESCRIPT TEST *************************")
 console.log("");
 
-NumberProperties();
+console.log(obj.Introduction("It is good to see you guys"))
 
 console.log("");
 console.log("****************************************************************************")
+
+
+/*
+To run it
+tsc helloworld.ts
+node helloworld.js
+
+If does not work
+1. install node
+2. run "npm install -g typescript
+*/

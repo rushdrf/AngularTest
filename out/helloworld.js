@@ -48,6 +48,52 @@ var Employee = /** @class */ (function () {
     };
     return Employee;
 }());
+var Singleton = /** @class */ (function () {
+    function Singleton() {
+    } //For single purpose make it private so that it will not be instantiate multiple times.
+    Singleton.GetSingletonInstnce = function () {
+        return this.singleton;
+    };
+    Singleton.prototype.setName = function (inputName) {
+        this.Name = inputName;
+    };
+    Singleton.prototype.getName = function () {
+        return this.Name;
+    };
+    Singleton.singleton = new Singleton();
+    return Singleton;
+}());
+var StaticClass = /** @class */ (function () {
+    function StaticClass() {
+    }
+    StaticClass.GetString = function () {
+        return "This is static class";
+    };
+    StaticClass.GetNumber = function () {
+        return 23;
+    };
+    return StaticClass;
+}());
+//#region object sample
+var people = {
+    Name: "Rusydi",
+    Age: 25,
+    Race: "Malay",
+    Intro: function () { return "Hello, my name is " + people.Name; }
+};
+var person = {
+    Name: "Afiq",
+    Age: 30,
+    Race: "Malay",
+    Intro: function () { return "Hello, my name is " + person.Name; }
+};
+var worker = {
+    Name: "Lee",
+    Age: 31,
+    Race: "Chinese",
+    Intro: function () { return "Hello, my name is " + worker.Name; }
+};
+//#endregion
 //#region function
 function RestParam() {
     var nums = [];
@@ -108,8 +154,8 @@ function disp(x, y) {
     console.log(y);
 }
 var NumberProperties = function () {
-    console.log("This is max number:" + Number.MAX_VALUE.toLocaleString());
-    console.log("This is min number:" + Number.MIN_VALUE.toString());
+    console.log("This is max number:" + Number.MAX_VALUE);
+    console.log("This is min number:" + Number.MIN_VALUE);
     console.log("This is positive infinity: " + Number.POSITIVE_INFINITY);
     console.log("This is negative infinity: " + Number.NEGATIVE_INFINITY);
 };
@@ -135,9 +181,25 @@ console.log("Employee 's Id: "+stu.id)
 console.log("Employee's name: "+stu.name)
 console.log("Employee's Email ID: "+stu.email) */
 //#endregion
+//#region object test
+var obj = {
+    Name: "Rusydi",
+    Age: 23,
+    Introduction: function (x) { return "Hello, my name is ".concat(obj.Name, ". I am ").concat(obj.Age, ". Quotes: ").concat(x); }
+};
+//#region 
 console.log("*********************** WELCOME TO TYPESCRIPT TEST *************************");
 console.log("");
-NumberProperties();
+console.log(obj.Introduction("It is good to see you guys"));
 console.log("");
 console.log("****************************************************************************");
+/*
+To run it
+tsc helloworld.ts
+node helloworld.js
+
+If does not work
+1. install node
+2. run "npm install -g typescript
+*/
 //# sourceMappingURL=helloworld.js.map
